@@ -1,3 +1,10 @@
+##TODO List
+
+##Description
+This project creates a responsive todo list. You can add tasks and then mark them as unfinished.
+
+
+
 This folder structure should be suitable for starting a project that uses a database:
 
 * Fork this repo
