@@ -3,16 +3,13 @@ require_relative 'todo'
 
 class TodoList
 
-  def initialize
-    @todos = Todo.all
-    @save = Todo.save
-  end
 
   def start
     loop do
+      @todos = Todo.all
       system('clear')
 
-      puts "---- TODO::ARB----"
+      puts "---- TODO::----"
 
       view_todos
 
@@ -34,13 +31,13 @@ class TodoList
 
   def view_todos
     @todos.each do |item|
-    puts item.entry
+    puts "#{item.id} #{item.entry} - #{item.completed}"
   end
 end
 
   def mark_todo
-     print "What have you finished?"
-    Todo.where(entry: get_input).update_all(completed: true)
+    print "What have you finished?"
+    Todo.update(get_input, completed: true)
   end
 
   def add_todo
@@ -51,4 +48,5 @@ end
   def get_input
     gets.chomp
   end
+  Todo.new
 end
