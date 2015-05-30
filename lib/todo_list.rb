@@ -1,15 +1,18 @@
+require_relative '../db/setup'
+require_relative 'todo'
+
 class TodoList
 
-  def initialize(file_name)
-    @file_name = file_name
-    # You will need to read from your CSV here and assign them to the @todos variable. make sure headers are set to true
+  def initialize
+    @todos = Todo.all
+    @save = Todo.save
   end
 
   def start
     loop do
       system('clear')
 
-      puts "---- TODO.rb ----"
+      puts "---- TODO::ARB----"
 
       view_todos
 
@@ -29,11 +32,22 @@ class TodoList
     end
   end
 
-  def todos
-    @todos
+  def view_todos
+    @todos.each do |item|
+    puts item.entry
+  end
+end
+
+  def mark_todo
+     print "What have you finished?"
+    Todo.where(entry: get_input).update_all(completed: true)
   end
 
-  private
+  def add_todo
+    puts "So, whatcha need todo?"
+    puts Todo.create(entry: get_input)
+  end
+
   def get_input
     gets.chomp
   end
