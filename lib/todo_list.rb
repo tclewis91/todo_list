@@ -48,6 +48,7 @@ end
   def delete_todo
     puts "So, whatcha wanna delete?"
     Todo.delete(get_input)
+  end
 
   def get_input
     gets.chomp
