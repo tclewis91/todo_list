@@ -45,6 +45,10 @@ end
     puts Todo.create(entry: get_input)
   end
 
+  def delete_todo
+    puts "So, whatcha wanna delete?"
+    Todo.delete(get_input)
+
   def get_input
     gets.chomp
   end
